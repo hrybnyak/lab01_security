@@ -25,16 +25,17 @@ namespace lab01_security
             BruteForceDecode(bytes);
         }
 
-        private byte[] StringToByteArray(string hex) =>
+        public byte[] StringToByteArray(string hex) =>
             Enumerable.Range(0, hex.Length)
                              .Where(x => x % 2 == 0)
                              .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
                              .ToArray();
 
-        private void BruteForceDecode(byte[] text)
+        public Dictionary<byte, string> BruteForceDecode(byte[] text)
         {
+            var dictionary = new Dictionary<byte, string>();
             //Key is 55
-            for (byte i = byte.MinValue; i < byte.MaxValue; i++)
+            for (byte i = byte.MinValue; i < byte.MaxValue / 2; i++)
             {
                 List<byte> result = new List<byte>();
                 for (int j = 0; j < text.Length; j++)
@@ -44,7 +45,9 @@ namespace lab01_security
                 }
                 var stringResult = Encoding.ASCII.GetString(result.ToArray());
                 OutputResults(i, stringResult);
+                dictionary.Add(i, stringResult);
             }
+            return dictionary;
         }
 
         private void OutputResults(int key, string result)
@@ -69,7 +72,7 @@ namespace lab01_security
 
         private void SaveResults(int key, string result)
         {
-            using (var fs = new FileStream(_fileName, FileMode.Open))
+            using (var fs = new FileStream(_fileName, FileMode.OpenOrCreate))
             {
                 using (var sw = new StreamWriter(fs))
                 {
