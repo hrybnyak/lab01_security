@@ -10,19 +10,33 @@ namespace lab01_security
     {
         public static void Decrypt(string encoded, int keyLength)
         {
-            var convertFromBase64Text = Convert.FromBase64String(encoded);
-            encoded = Encoding.ASCII.GetString(convertFromBase64Text);
             var separatedEncodedStrings = SeperateEncodedString(encoded, keyLength);
             var xorDecoded = XorBruteForce(separatedEncodedStrings);
-            //keys are 76, 48, 108
-            var list = new List<string> { xorDecoded[0][76], xorDecoded[1][48], xorDecoded[2][108] };
-            Console.WriteLine(AssembleResult(list));
+        }
+
+        public static string DecryptWithKeys(string encoded, int keyLength, List<byte> keyValues)
+        {
+            var separatedEncodedStrings = SeperateEncodedString(encoded, keyLength);
+            
+            if (separatedEncodedStrings.Count != keyValues.Count)
+            {
+                throw new InvalidOperationException($"{nameof(keyLength)}: {keyLength} should be equal to {nameof(keyValues)} count: {keyValues.Count}");
+            }
+
+            var decodedValues = new List<string>();
+            var xorDecoder = new XorCipherDecoder(false, false);
+
+            for (int i = 0; i < separatedEncodedStrings.Count; i++)
+            {
+                var bytes = Encoding.ASCII.GetBytes(separatedEncodedStrings[i]);
+                decodedValues.Add(xorDecoder.XorDecode(bytes, keyValues[i]));
+            }
+
+            return AssembleResult(decodedValues);
         }
 
         public static void CalculateIndexOfCoincidence(string encoded)
         {
-            var convertFromBase64Text = Convert.FromBase64String(encoded);
-            encoded = Encoding.ASCII.GetString(convertFromBase64Text);
             var temp = encoded;
             for (int i = 1; i < encoded.Length / 2; i++)
             {

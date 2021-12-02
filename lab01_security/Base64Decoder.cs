@@ -6,11 +6,15 @@ namespace lab01_security
 {
     public static class Base64Decoder
     {
-        public static string Decode(string encodedText)
+        public static string ConvertFromBinaryAndBase64(string encodedText)
         {
-            var bytes = GetBytesFromBinaryString(encodedText);
-            var base64Text = Encoding.ASCII.GetString(bytes);
-            var convertFromBase64Text = Convert.FromBase64String(base64Text);
+            var fromBinaryToBytes = GetBytesFromBinaryString(encodedText);
+            return DecodeBase64(Encoding.ASCII.GetString(fromBinaryToBytes));
+        }
+
+        public static string DecodeBase64(string encodedText)
+        {
+            var convertFromBase64Text = Convert.FromBase64String(encodedText);
             return Encoding.ASCII.GetString(convertFromBase64Text);
         }
 

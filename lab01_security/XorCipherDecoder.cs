@@ -25,6 +25,12 @@ namespace lab01_security
             BruteForceDecode(bytes);
         }
 
+        public void XorDecode(string encodedText, byte key)
+        {
+            var bytes = StringToByteArray(encodedText);
+            XorDecode(bytes, key);
+        }
+
         public byte[] StringToByteArray(string hex) =>
             Enumerable.Range(0, hex.Length)
                              .Where(x => x % 2 == 0)
@@ -35,19 +41,33 @@ namespace lab01_security
         {
             var dictionary = new Dictionary<byte, string>();
             //Key is 55
-            for (byte i = byte.MinValue; i < byte.MaxValue / 2; i++)
+            for (byte i = byte.MinValue; i < byte.MaxValue; i++)
             {
-                List<byte> result = new List<byte>();
+                StringBuilder sb = new StringBuilder();
                 for (int j = 0; j < text.Length; j++)
                 {
-                    byte xor = (byte)(text[j] ^ i);
-                    result.Add(xor);
+                    char xor = (char)(text[j] ^ i);
+                    sb.Append(xor);
                 }
-                var stringResult = Encoding.ASCII.GetString(result.ToArray());
-                OutputResults(i, stringResult);
-                dictionary.Add(i, stringResult);
+                var result = sb.ToString();
+                OutputResults(i, result);
+                dictionary.Add(i, result);
             }
             return dictionary;
+        }
+
+        public string XorDecode(byte[] text, byte key)
+        {
+            string result = string.Empty;
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < text.Length; j++)
+            {
+                char xor = (char)(text[j] ^ key);
+                sb.Append(xor);
+            }
+            result = sb.ToString();
+            OutputResults(key, result);
+            return result;
         }
 
         private void OutputResults(int key, string result)
