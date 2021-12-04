@@ -24,6 +24,8 @@ namespace lab01_security
             var keys = new List<byte> { 76, 48, 108 };
             Console.WriteLine($"Key: {Encoding.ASCII.GetString(keys.ToArray())}");
             Console.WriteLine(RepetingKeyCipherDecoder.DecryptWithKeys(decodedFromBase64, 3, keys));
+
+
         }
 
 

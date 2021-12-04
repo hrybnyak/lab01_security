@@ -6,7 +6,7 @@ using System.Text;
 
 namespace lab01_security
 {
-    public class XorCipherDecoder : IXorCipherDecoder
+    public class XorCipherDecoder 
     {
         public readonly bool _printResult = true;
         public readonly bool _saveResultsToFile = true;
