@@ -1,0 +1,402 @@
+[
+  {
+    "Letter": "THE",
+    "Chance": 0.03508232
+  },
+  {
+    "Letter": "AND",
+    "Chance": 0.0078
+  },
+  {
+    "Letter": "ING",
+    "Chance": 0.0069
+  },
+  {
+    "Letter": "HER",
+    "Chance": 0.0042
+  },
+  {
+    "Letter": "THA",
+    "Chance": 0.0037
+  },
+  {
+    "Letter": "ENT",
+    "Chance": 0.0036
+  },
+  {
+    "Letter": "ERE",
+    "Chance": 0.0033
+  },
+  {
+    "Letter": "ION",
+    "Chance": 0.0033
+  },
+  {
+    "Letter": "ETH",
+    "Chance": 0.0032
+  },
+  {
+    "Letter": "NTH",
+    "Chance": 0.0032
+  },
+  {
+    "Letter": "HAT",
+    "Chance": 0.0031
+  },
+  {
+    "Letter": "INT",
+    "Chance": 0.0029
+  },
+  {
+    "Letter": "FOR",
+    "Chance": 0.0028
+  },
+  {
+    "Letter": "ALL",
+    "Chance": 0.0027
+  },
+  {
+    "Letter": "STH",
+    "Chance": 0.0026
+  },
+  {
+    "Letter": "TER",
+    "Chance": 0.0026
+  },
+  {
+    "Letter": "EST",
+    "Chance": 0.0026
+  },
+  {
+    "Letter": "TIO",
+    "Chance": 0.0026
+  },
+  {
+    "Letter": "HIS",
+    "Chance": 0.0025
+  },
+  {
+    "Letter": "OFT",
+    "Chance": 0.0024
+  },
+  {
+    "Letter": "HES",
+    "Chance": 0.0024
+  },
+  {
+    "Letter": "ITH",
+    "Chance": 0.0024
+  },
+  {
+    "Letter": "ERS",
+    "Chance": 0.0024
+  },
+  {
+    "Letter": "ATI",
+    "Chance": 0.0024
+  },
+  {
+    "Letter": "OTH",
+    "Chance": 0.0023
+  },
+  {
+    "Letter": "FTH",
+    "Chance": 0.0023
+  },
+  {
+    "Letter": "DTH",
+    "Chance": 0.0023
+  },
+  {
+    "Letter": "VER",
+    "Chance": 0.0022
+  },
+  {
+    "Letter": "TTH",
+    "Chance": 0.0022
+  },
+  {
+    "Letter": "THI",
+    "Chance": 0.0022
+  },
+  {
+    "Letter": "REA",
+    "Chance": 0.0021
+  },
+  {
+    "Letter": "SAN",
+    "Chance": 0.0021
+  },
+  {
+    "Letter": "WIT",
+    "Chance": 0.0021
+  },
+  {
+    "Letter": "ATE",
+    "Chance": 0.002
+  },
+  {
+    "Letter": "ARE",
+    "Chance": 0.002
+  },
+  {
+    "Letter": "EAR",
+    "Chance": 0.0019
+  },
+  {
+    "Letter": "RES",
+    "Chance": 0.0019
+  },
+  {
+    "Letter": "ONT",
+    "Chance": 0.0018
+  },
+  {
+    "Letter": "TIN",
+    "Chance": 0.0018
+  },
+  {
+    "Letter": "ESS",
+    "Chance": 0.0018
+  },
+  {
+    "Letter": "RTH",
+    "Chance": 0.0018
+  },
+  {
+    "Letter": "WAS",
+    "Chance": 0.0018
+  },
+  {
+    "Letter": "SOF",
+    "Chance": 0.0018
+  },
+  {
+    "Letter": "EAN",
+    "Chance": 0.0017
+  },
+  {
+    "Letter": "YOU",
+    "Chance": 0.0017
+  },
+  {
+    "Letter": "SIN",
+    "Chance": 0.0017
+  },
+  {
+    "Letter": "STO",
+    "Chance": 0.0017
+  },
+  {
+    "Letter": "IST",
+    "Chance": 0.0017
+  },
+  {
+    "Letter": "EDT",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "EOF",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "EVE",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "ONE",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "AST",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "ONS",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "DIN",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "OME",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "CON",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "ERA",
+    "Chance": 0.0016
+  },
+  {
+    "Letter": "STA",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "OUR",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "NCE",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "TED",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "GHT",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "HEM",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "MAN",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "HEN",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "NOT",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "ORE",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "OUT",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "ORT",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "ESA",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "ERT",
+    "Chance": 0.0015
+  },
+  {
+    "Letter": "SHE",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "ANT",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "NGT",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "EDI",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "ERI",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "EIN",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "NDT",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "NTO",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "ATT",
+    "Chance": 0.0014
+  },
+  {
+    "Letter": "ECO",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "AVE",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "MEN",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "HIN",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "HEA",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "IVE",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "EDA",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "INE",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "RAN",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "HEC",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "TAN",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "RIN",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "ILL",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "NDE",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "THO",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "HAN",
+    "Chance": 0.0013
+  },
+  {
+    "Letter": "COM",
+    "Chance": 0.0012
+  },
+  {
+    "Letter": "IGH",
+    "Chance": 0.0012
+  },
+  {
+    "Letter": "AIN",
+    "Chance": 0.0012
+  }
+]
