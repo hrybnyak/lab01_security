@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace lab01_security
@@ -78,7 +79,7 @@ namespace lab01_security
             }
             var frequencies = result.Select(keyValuePair => new KeyValuePair<string, double>(keyValuePair.Key, keyValuePair.Value / (double)numberOfTrigrams))
                 .ToDictionary(kv => kv.Key, kv => kv.Value);
-            return FillMissingNgramFrequencies(frequencies, AllBigrams);
+            return FillMissingNgramFrequencies(frequencies, AllTrigrams);
         }
 
         public static IDictionary<string, double> FillMissingNgramFrequencies(IDictionary<string, double> frequencies, IList<string> allNgrams)
@@ -120,12 +121,12 @@ namespace lab01_security
             //at this point both dictionaries should contain all bigrams and trigrams possible
             foreach(var key in decodedTextBigramFrequencies.Keys)
             {
-                sumOfDeltaBigrams += (decodedTextBigramFrequencies[key] - languageBigramFrequencies[key]);
+                sumOfDeltaBigrams += Math.Abs(decodedTextBigramFrequencies[key] - languageBigramFrequencies[key]);
             }
             double sumOfDeltaTrigrams = 0.0;
             foreach (var key in decodedTextTrigramFrequencies.Keys)
             {
-                sumOfDeltaTrigrams += (decodedTextTrigramFrequencies[key] - languageTrigramFrequencies[key]);
+                sumOfDeltaTrigrams += Math.Abs(decodedTextTrigramFrequencies[key] - languageTrigramFrequencies[key]);
             }
             return bigramWeigth * sumOfDeltaBigrams + trigramWeigth * sumOfDeltaTrigrams;
         }
