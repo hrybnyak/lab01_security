@@ -93,6 +93,41 @@ namespace lab01_security
             }
             return frequencies;
         }
-    }
+    
+        public static double FitnessFunction(
+            string decodedText, 
+            IDictionary<string, double> languageBigramFrequencies, 
+            IDictionary<string, double> languageTrigramFrequencies)
+        {
+            var decodedTextBigramFrequencies = CalculateBigramsFrequencies(decodedText);
+            var decodedTextTrigramFrequencies = CalculateTrigramsFrequencies(decodedText);
+            return FitnessFunction(
+                decodedTextBigramFrequencies, 
+                decodedTextTrigramFrequencies, 
+                languageBigramFrequencies,
+                languageTrigramFrequencies);
+        }
 
+        public static double FitnessFunction(
+            IDictionary<string, double> decodedTextBigramFrequencies, 
+            IDictionary<string, double> decodedTextTrigramFrequencies, 
+            IDictionary<string, double> languageBigramFrequencies, 
+            IDictionary<string, double> languageTrigramFrequencies,
+            double bigramWeigth = 1.0,
+            double trigramWeigth = 1.0)
+        {
+            double sumOfDeltaBigrams = 0.0;
+            //at this point both dictionaries should contain all bigrams and trigrams possible
+            foreach(var key in decodedTextBigramFrequencies.Keys)
+            {
+                sumOfDeltaBigrams += (decodedTextBigramFrequencies[key] - languageBigramFrequencies[key]);
+            }
+            double sumOfDeltaTrigrams = 0.0;
+            foreach (var key in decodedTextTrigramFrequencies.Keys)
+            {
+                sumOfDeltaTrigrams += (decodedTextTrigramFrequencies[key] - languageTrigramFrequencies[key]);
+            }
+            return bigramWeigth * sumOfDeltaBigrams + trigramWeigth * sumOfDeltaTrigrams;
+        }
+    }
 }
