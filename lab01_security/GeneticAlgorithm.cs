@@ -11,8 +11,6 @@ namespace lab01_security
         public readonly IDictionary<string, double> _languageTrigramFrequenies;
         public readonly int _numberOfGenerations;
         public readonly int _populationSize;
-        public readonly int _bestPopulationSize;
-        public readonly int _childerSize;
         public readonly int _mutationSize;
         public readonly double _bigramWeigth;
         public readonly double _trigramWeigth;
@@ -20,12 +18,12 @@ namespace lab01_security
         public GeneticAlgorithm(
             IDictionary<string, double> languageBigramFrequencies,
             IDictionary<string, double> languageTrigramFrequenies,
-            int numberOfGenerations = 500,
-            int populationSize = 80,
+            int numberOfGenerations = 300,
+            int populationSize = 30,
             double bigramWeigth = 1.0,
             double trigramWeigth = 1.0,
             double bestPopulationSizePercent = 0.2,
-            double mutationPercent = 0.05)
+            double mutationPercent = 0.3)
         {
             _languageBigramFrequencies = 
                 GeneticAlgorithmFrequencyHelper.FillMissingNgramFrequencies(languageBigramFrequencies, GeneticAlgorithmFrequencyHelper.AllBigrams);
@@ -35,9 +33,7 @@ namespace lab01_security
             _populationSize = populationSize;
             _bigramWeigth = bigramWeigth;
             _trigramWeigth = trigramWeigth;
-            _bestPopulationSize = (int) (populationSize * bestPopulationSizePercent);
-            _childerSize = _populationSize - _bestPopulationSize;
-            _mutationSize = (int)(_childerSize * mutationPercent);
+            _mutationSize = (int)(_populationSize * mutationPercent);
             _mutationSize = _mutationSize % 2 == 0 ? _mutationSize : _mutationSize + 1;
         }
 
@@ -47,14 +43,17 @@ namespace lab01_security
             for (int i = 0; i < _numberOfGenerations; i++)
             {
                 var evaluatedPopulation = EvaluatePopulation(encoded, population);
-                var bestPopulation = SelectBest(evaluatedPopulation);
-                var parents = SelectParents(evaluatedPopulation);
-                var crossovered = Crossover(bestPopulation, parents).Distinct().ToList();
-                var childer1 = crossovered.Take(_childerSize - _mutationSize);
-                var shouldMutate = crossovered.TakeLast(_mutationSize).ToList();
+                var parents1 = SelectParents(evaluatedPopulation);
+                var withoutParents1 = evaluatedPopulation.Where(ep => !parents1.Contains(ep.Item1)).ToList();
+                var parents2 = SelectParents(withoutParents1);
+                var crossovered = Crossover(parents1, parents2).Distinct().ToList();
+                crossovered = EvaluatePopulation(encoded, crossovered)
+                    .Select(v => v.Item1).ToList();
+                var childer1 = crossovered.Take(_populationSize - _mutationSize);
+                var shouldMutate = crossovered.Skip(_populationSize - _mutationSize)
+                    .Take(_mutationSize).ToList();
                 var childer2 = Mutate(shouldMutate);
                 population = new List<string>();
-                population.AddRange(bestPopulation);
                 population.AddRange(childer1);
                 population.AddRange(childer2);
                 if (population.Count != _populationSize)
@@ -102,19 +101,13 @@ namespace lab01_security
                 Console.WriteLine(decoded);
                 result.Add(new (population[i], fitnessFunctionScore));
             }
-            return result.OrderByDescending(v => v.Item2).ToList();
+            return result.OrderBy(v => v.Item2).ToList();
         }
-
-        private IList<string> SelectBest(IList<Tuple<string, double>> evaluatedPopulation)
-            => evaluatedPopulation.Take(_bestPopulationSize)
-            .Select(v => v.Item1)
-            .ToList();
 
         private IList<string> SelectParents(IList<Tuple<string, double>> evaluatedPopulation)
         {
-            var numberOfParents = (_childerSize) / _bestPopulationSize;
-            var others = evaluatedPopulation.TakeLast(_childerSize).ToList();
-            return RouletteWheelParentsSelection(numberOfParents, others);
+            var numberOfParents = (int) (_populationSize * 0.3);
+            return RouletteWheelParentsSelection(numberOfParents, evaluatedPopulation);
             
         }
 

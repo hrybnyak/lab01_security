@@ -33,6 +33,10 @@ namespace lab01_security
             var trigramFrequency = JsonConvert.DeserializeObject<Dictionary<string, double>>(trigramFrequencyJson);
             var geneticAlgorithm = new GeneticAlgorithm(bigramFrequency, trigramFrequency);
             geneticAlgorithm.DecodeSubstitutionCipher(block3);
+            //var fitnessFunctionValue = GeneticAlgorithmFrequencyHelper.FitnessFunction("ADDTHEABILITYTODECIPHERANYKINDOFPOLYALPHABETICSUBSTITUTIONCIPHERSTHEONEUSEDINTHECIPHERTEXTSHEREHASTWENTYSIXINDEPENDENTRANDOMLYCHOSENMONOALPHABETICSUBSTITUTIONPATTERNSFOREACHLETTERFROMENGLISHALPHABETITISCLEARTHATYOUCANNOLONGERRELYONTHESAMESIMPLEROUTINEOFGUESSINGTHEKEYBYEXHAUSTIVESEARCHWHICHYOUPROBABLYUSEDTODECIPHERTHEPREVIOUSPARAGRAPHWILLTHEINDEXOFCOINCIDENCESTILLWORKASASUGGESTIONYOUCANTRYTODIVIDETHEMESSAGEINPARTS",
+            //    GeneticAlgorithmFrequencyHelper.FillMissingNgramFrequencies(bigramFrequency, GeneticAlgorithmFrequencyHelper.AllBigrams),
+            //    GeneticAlgorithmFrequencyHelper.FillMissingNgramFrequencies(trigramFrequency, GeneticAlgorithmFrequencyHelper.AllTrigrams));
+            //Console.WriteLine(fitnessFunctionValue);
         }
     }
 }
