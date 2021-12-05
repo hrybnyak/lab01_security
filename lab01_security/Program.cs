@@ -20,23 +20,22 @@ namespace lab01_security
 
             //var block2 = File.ReadAllTextAsync($"{Environment.CurrentDirectory}/resources/block2.txt").Result;
             //var decodedFromBase64 = Base64Decoder.DecodeBase64(block2);
-            ////RepetingKeyCipherDecoder.CalculateIndexOfCoincidence(decodedFromBase64);
-            ////RepetingKeyCipherDecoder.Decrypt(decodedFromBase64, 3);
+            //////RepetingKeyCipherDecoder.CalculateIndexOfCoincidence(decodedFromBase64);
+            //////RepetingKeyCipherDecoder.Decrypt(decodedFromBase64, 3);
             //var keys = new List<byte> { 76, 48, 108 };
             //Console.WriteLine($"Key: {Encoding.ASCII.GetString(keys.ToArray())}");
             //Console.WriteLine(RepetingKeyCipherDecoder.DecryptWithKeys(decodedFromBase64, 3, keys));
 
-            var block3 = File.ReadAllTextAsync($"{Environment.CurrentDirectory}/resources/block3.txt").Result;
-            var bigramFrequencyJson = File.ReadAllTextAsync($"{Environment.CurrentDirectory}/resources/bigramFrequency.json").Result;
-            var trigramFrequencyJson = File.ReadAllTextAsync($"{Environment.CurrentDirectory}/resources/trigramFrequency.json").Result;
-            var bigramFrequency = JsonConvert.DeserializeObject<Dictionary<string, double>>(bigramFrequencyJson);
-            var trigramFrequency = JsonConvert.DeserializeObject<Dictionary<string, double>>(trigramFrequencyJson);
-            var geneticAlgorithm = new GeneticAlgorithm(bigramFrequency, trigramFrequency);
-            geneticAlgorithm.DecodeSubstitutionCipher(block3);
-            //var fitnessFunctionValue = GeneticAlgorithmFrequencyHelper.FitnessFunction("ADDTHEABILITYTODECIPHERANYKINDOFPOLYALPHABETICSUBSTITUTIONCIPHERSTHEONEUSEDINTHECIPHERTEXTSHEREHASTWENTYSIXINDEPENDENTRANDOMLYCHOSENMONOALPHABETICSUBSTITUTIONPATTERNSFOREACHLETTERFROMENGLISHALPHABETITISCLEARTHATYOUCANNOLONGERRELYONTHESAMESIMPLEROUTINEOFGUESSINGTHEKEYBYEXHAUSTIVESEARCHWHICHYOUPROBABLYUSEDTODECIPHERTHEPREVIOUSPARAGRAPHWILLTHEINDEXOFCOINCIDENCESTILLWORKASASUGGESTIONYOUCANTRYTODIVIDETHEMESSAGEINPARTS",
-            //    GeneticAlgorithmFrequencyHelper.FillMissingNgramFrequencies(bigramFrequency, GeneticAlgorithmFrequencyHelper.AllBigrams),
-            //    GeneticAlgorithmFrequencyHelper.FillMissingNgramFrequencies(trigramFrequency, GeneticAlgorithmFrequencyHelper.AllTrigrams));
-            //Console.WriteLine(fitnessFunctionValue);
+            //var block3 = File.ReadAllTextAsync($"{Environment.CurrentDirectory}/resources/block3.txt").Result;
+            ////var bigramFrequencyJson = File.ReadAllTextAsync($"{Environment.CurrentDirectory}/resources/bigramFrequency.json").Result;
+            ////var trigramFrequencyJson = File.ReadAllTextAsync($"{Environment.CurrentDirectory}/resources/trigramFrequency.json").Result;
+            ////var bigramFrequency = JsonConvert.DeserializeObject<Dictionary<string, double>>(bigramFrequencyJson);
+            ////var trigramFrequency = JsonConvert.DeserializeObject<Dictionary<string, double>>(trigramFrequencyJson);
+            ////var geneticAlgorithm = new GeneticAlgorithm(bigramFrequency, trigramFrequency);
+            ////geneticAlgorithm.DecodeSubstitutionCipher(block3);
+            //Console.WriteLine(SubstitutionCipherDecoder.Decode(block3, "EKMFLGDQVZNTOWYHXUSPAIBRCJ"));
+            var block4 = File.ReadAllTextAsync($"{Environment.CurrentDirectory}/resources/block4.txt").Result;
+            RepetingKeyCipherDecoder.CalculateIndexOfCoincidence(block4);
         }
     }
 }

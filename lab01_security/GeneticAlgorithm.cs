@@ -9,6 +9,7 @@ namespace lab01_security
     {
         public readonly IDictionary<string, double> _languageBigramFrequencies;
         public readonly IDictionary<string, double> _languageTrigramFrequenies;
+        public readonly IDictionary<int, string> _bestInEachGeneration = new Dictionary<int, string>();
         public readonly int _numberOfGenerations;
         public readonly int _populationSize;
         public readonly int _mutationSize;
@@ -18,12 +19,11 @@ namespace lab01_security
         public GeneticAlgorithm(
             IDictionary<string, double> languageBigramFrequencies,
             IDictionary<string, double> languageTrigramFrequenies,
-            int numberOfGenerations = 300,
-            int populationSize = 30,
+            int numberOfGenerations = 350,
+            int populationSize = 40,
             double bigramWeigth = 1.0,
             double trigramWeigth = 1.0,
-            double bestPopulationSizePercent = 0.2,
-            double mutationPercent = 0.3)
+            double mutationPercent = 0.4)
         {
             _languageBigramFrequencies = 
                 GeneticAlgorithmFrequencyHelper.FillMissingNgramFrequencies(languageBigramFrequencies, GeneticAlgorithmFrequencyHelper.AllBigrams);
@@ -43,6 +43,7 @@ namespace lab01_security
             for (int i = 0; i < _numberOfGenerations; i++)
             {
                 var evaluatedPopulation = EvaluatePopulation(encoded, population);
+                _bestInEachGeneration.Add(i, evaluatedPopulation[0].Item1);
                 var parents1 = SelectParents(evaluatedPopulation);
                 var withoutParents1 = evaluatedPopulation.Where(ep => !parents1.Contains(ep.Item1)).ToList();
                 var parents2 = SelectParents(withoutParents1);
@@ -60,6 +61,20 @@ namespace lab01_security
                 {
                     throw new InvalidOperationException();
                 }
+            }
+            PrintResults(encoded);
+        }
+
+        private void PrintResults(string encoded)
+        {
+            foreach (var key in _bestInEachGeneration.Keys.OrderBy(k => k))
+            {
+                var decoded = SubstitutionCipherDecoder.Decode(encoded, _bestInEachGeneration[key]);
+                var score = GeneticAlgorithmFrequencyHelper.FitnessFunction(decoded, _languageBigramFrequencies, _languageTrigramFrequenies);
+                Console.WriteLine($"Generation: {key}");
+                Console.WriteLine($"Key: {_bestInEachGeneration[key]}");
+                Console.WriteLine($"Score: {score}");
+                Console.WriteLine($"Decoded: {decoded}");
             }
         }
 
@@ -97,8 +112,6 @@ namespace lab01_security
                 var decoded = SubstitutionCipherDecoder.Decode(encoded, population[i]);
                 var fitnessFunctionScore = GeneticAlgorithmFrequencyHelper.FitnessFunction
                     (decoded, _languageBigramFrequencies, _languageTrigramFrequenies);
-                Console.WriteLine($"{population[i]}: {fitnessFunctionScore}");
-                Console.WriteLine(decoded);
                 result.Add(new (population[i], fitnessFunctionScore));
             }
             return result.OrderBy(v => v.Item2).ToList();
