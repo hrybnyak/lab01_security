@@ -22,6 +22,9 @@
     <None Update="resources\block3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="resources\block4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="resources\input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
